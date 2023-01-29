@@ -6,13 +6,9 @@ require("dotenv").config();
 const router = require("./routes/route");
 const errorHandler = require("./middleware/errorHandler");
 
-var corsOptions = {
-  origin: "https://tyrantx-search-app.netlify.app",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 //app.use("/v1/api/", express.static("./public"));
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.use("/v1/api/fruits", router);

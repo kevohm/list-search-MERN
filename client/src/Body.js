@@ -20,22 +20,21 @@ const Body = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [updateAll, setUpdateAll] = useState(false);
   const getData = async () => {
-    let url = "https://list-search-mern-production.up.railway.app/v1/api";
+    //https://list-search-mern-production.up.railway.app/v1/api
+    let url = "";
     if (myVar.searchData === "") {
-      url +=
-        "/fruits/?sort=" +
+      url = "https://list-search-mern-production.up.railway.app/v1/api/fruits/?sort=" +
         myVar.selectData.toLowerCase();
     } else {
-      url +=
-        "/fruits/?sort=" +
+      url = "https://list-search-mern-production.up.railway.app/v1/api/fruits/?sort=" +
         myVar.selectData.toLowerCase() +
         "&name=" +
         myVar.searchData.toLowerCase();
     }
     let resp = await fetch(url);
     if (resp.status >= 200 && resp.status <= 299) {
-      myVar.setLoading(false)
-      myVar.setError(false)
+      myVar.setLoading(false);
+      myVar.setError(false);
       let result = await resp.json();
       setResponseData({
         showResponse: true,
@@ -48,8 +47,7 @@ const Body = () => {
       myVar.setError(true);
       setResponseData({ ...responseData, showResponse: false });
     }
-    
-    };
+  };
     useEffect(() => {
       getData();
     }, [updateAll,myVar.searchData, myVar.selectData]);

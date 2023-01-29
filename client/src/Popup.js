@@ -10,9 +10,7 @@ const Popup = ({showPopup,setShowPopup,setResponseData, responseData, updateAll,
   const { _id } = myVar.updateData;
   const url = [
     {
-      url:
-        "https://list-search-mern-production.up.railway.app/v1/api/fruits/" +
-        _id,
+      url: "https://list-search-mern-production.up.railway.app//v1/api/fruits/" + _id,
       options: {
         headers: { "Content-type": "application/json" },
         method: "PATCH",
@@ -20,9 +18,7 @@ const Popup = ({showPopup,setShowPopup,setResponseData, responseData, updateAll,
       },
     },
     {
-      url:
-        "https://list-search-mern-production.up.railway.app/v1/api/fruits/" +
-        _id,
+      url: "https://list-search-mern-production.up.railway.app//v1/api/fruits/" + _id,
       options: {
         method: "DELETE",
       },

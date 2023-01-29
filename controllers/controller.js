@@ -25,12 +25,6 @@ const getFruits = async (req, res) => {
       sortArray.name = "asc";
     }
     const fruitsReq = await fruits.find(queryObject).sort(sortArray);
-    console.log(
-      `{success:boolean,
-        data: fruits, 
-        noOfHits: no of fruits, 
-        msg:"fetched all data"}`
-    );
     return res
       .status(200)
       .json({ success: true, data: fruitsReq, noOfHits: fruitsReq.length, msg:"fetched all data"});

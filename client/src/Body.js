@@ -20,11 +20,13 @@ const Body = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [updateAll, setUpdateAll] = useState(false);
   const getData = async () => {
-    let url = "/fruits";
+    let url = "https://list-search-mern-production.up.railway.app/v1/api";
     if (myVar.searchData === "") {
-      url = "/fruits/?sort=" + myVar.selectData.toLowerCase();
+      url +=
+        "/fruits/?sort=" +
+        myVar.selectData.toLowerCase();
     } else {
-      url =
+      url +=
         "/fruits/?sort=" +
         myVar.selectData.toLowerCase() +
         "&name=" +

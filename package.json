@@ -14,7 +14,6 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongoose": "^6.5.2",
-    "nodemon": "^2.0.19",
-    "react-icons": "^4.4.0"
+    "nodemon": "^2.0.19"
   }
 }

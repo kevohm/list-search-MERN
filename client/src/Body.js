@@ -1,21 +1,21 @@
-import React, { useState,useEffect } from "react";
-import {useMyContext} from "./Context"
+import React, { useState, useEffect } from "react";
+import { useMyContext } from "./Context";
 
 import SelectFrom from "./SelectFrom";
 import AllCategories from "./AllCategories";
 import Content from "./Content";
-import Popup from "./Popup"
-import Response from "./Response"
-
+import Popup from "./Popup";
+import Response from "./Response";
+import { base } from "./utils/config";
 
 const Body = () => {
   const myVar = useMyContext();
-  
+
   const [data, setData] = useState([]);
   const [responseData, setResponseData] = useState({
     responseUpdated: false,
     msg: "",
-    showResponse:false,
+    showResponse: false,
   });
   const [showPopup, setShowPopup] = useState(false);
   const [updateAll, setUpdateAll] = useState(false);
@@ -23,10 +23,10 @@ const Body = () => {
     //https://list-search-mern-production.up.railway.app/v1/api
     let url = "";
     if (myVar.searchData === "") {
-      url = "https://list-search-mern-production.up.railway.app/v1/api/fruits/?sort=" +
-        myVar.selectData.toLowerCase();
+      url = `${base}/fruits/?sort=` + myVar.selectData.toLowerCase();
     } else {
-      url = "https://list-search-mern-production.up.railway.app/v1/api/fruits/?sort=" +
+      url =
+        `${base}/fruits/?sort=` +
         myVar.selectData.toLowerCase() +
         "&name=" +
         myVar.searchData.toLowerCase();
@@ -48,15 +48,13 @@ const Body = () => {
       setResponseData({ ...responseData, showResponse: false });
     }
   };
-    useEffect(() => {
-      getData();
-    }, [updateAll,myVar.searchData, myVar.selectData]);
-  
+  useEffect(() => {
+    getData();
+  }, [updateAll, myVar.searchData, myVar.selectData]);
+
   if (myVar.loading) {
-    return <h4>
-      loading...
-    </h4>
-  } else if (myVar.error) { 
+    return <h4>loading...</h4>;
+  } else if (myVar.error) {
     return (
       <div className="Error-div">
         <img
@@ -102,7 +100,7 @@ const Body = () => {
                 setSelectData={myVar.setSelectData}
               />
             </div>
-          </form> 
+          </form>
           <div className="body-header">
             <div className="header">
               <AllCategories />
@@ -113,7 +111,7 @@ const Body = () => {
             {data.length === 0 ? (
               <div className="empty">No Element Found</div>
             ) : (
-                <Content data={data} setShowPopup={ setShowPopup} />
+              <Content data={data} setShowPopup={setShowPopup} />
             )}
           </div>
         </div>

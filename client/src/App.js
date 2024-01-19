@@ -1,12 +1,13 @@
-import React from 'react'
-import Body from './Body';
-import Popup from "./Popup";
-import Response from "./Response";
-
+import React from "react";
+import Body from "./Body";
 const App = () => {
-    return <>
-        <Body />
+  const url = process.env.BASE_URL;
+  console.log(url);
+  return (
+    <>
+      <Body />
     </>
-}
+  );
+};
 
 export default App;
